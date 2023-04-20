@@ -1,0 +1,26 @@
+# https://jorisroovers.com/gitlint/configuration/
+[general]
+ignore=body-is-missing
+ignore-merge-commits=true
+regex-style-search=True
+
+[title-max-length]
+line-length=50
+
+[title-min-length]
+min-length=3
+
+[body-max-line-length]
+line-length=79
+
+[body-min-length]
+min-length=1
+
+# Ignore rules if it's work in progress commit
+[ignore-by-title]
+regex=^(WIP|wip)
+
+# Ignore certain lines in a commit body that match a regex.
+# E.g. Ignore all lines that start with 'Co-authored-By'
+[ignore-body-lines]
+regex=^Co-authored-by

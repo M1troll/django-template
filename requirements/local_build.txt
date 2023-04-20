@@ -1,0 +1,32 @@
+# *****************************************************
+# Packages required to start local building of project
+# *******************************************************
+
+pyyaml
+requests
+boto3
+
+# Invoke is a Python (2.7 and 3.4+) task execution tool & library,
+# drawing inspiration from various sources to arrive at a powerful & clean feature set.
+# http://www.pyinvoke.org/
+invoke==2.*
+
+# Rich is a Python library for writing rich text (with color and style) to the terminal,
+# and for displaying advanced content such as tables, markdown, and syntax highlighted code.
+# https://rich.readthedocs.io/en/stable/introduction.html
+rich
+
+# Set of CLI-tools that helps to manage requirements using pip
+# https://github.com/jazzband/pip-tools#pip-tools--pip-compile--pip-sync
+pip-tools
+
+# For managing git hooks
+pre-commit
+
+## Linters
+# Plugin for add ability config flake8 in `pyproject.toml`
+# https://pypi.org/project/Flake8-pyproject/
+Flake8-pyproject
+# Static type checker for Python
+# https://mypy.readthedocs.io/en/stable/
+mypy

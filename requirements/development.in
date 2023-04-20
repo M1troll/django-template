@@ -1,0 +1,15 @@
+# Packages used just for development
+-r production.in
+
+# IPython debugger
+# https://pypi.org/project/ipdb/
+ipdb
+ipython
+
+## Testing
+# Plugin to list unused or duplicated fixtures in a pytest suite
+# https://github.com/jllorencetti/pytest-deadfixtures
+pytest-deadfixtures
+
+# https://github.com/typeddjango/djangorestframework-stubs
+djangorestframework-stubs

@@ -1,0 +1,118 @@
+name = "django-template"
+version = "0.1.0"
+authors = "M1troll <oboleninoff.anton@yandex.ru>"
+
+
+[tool.pytest]
+# --reuse-db:
+#   allow saving DB tables between test sessions (like --keepdb)
+# --no-migrations
+#   create DB tables using current state, not using migraitons (faster)
+# --capture=no
+#   allow use of ipdb during tests
+# --cov-report term-missing
+#   show coverage report with missing lines if `--cov path` arg passed
+# --ff
+#   run last failed tests first
+# -m "not slow"
+#   run just not slow tests
+# --disable-warnings
+#   suppress the warning summary
+
+addopts = """
+    --reuse-db
+    --capture=no
+    --cov-report term-missing
+    --ff
+    -m "not slow and not model_unimportant and not slow_admin"
+    --disable-warnings
+"""
+# skip all files inside following dirs
+norecursedirs = ["_tmp", "node_modules", "src"]
+
+
+[tool.django-stubs]
+django_settings_module = "django_template.settings"
+
+
+# *****************************************************
+# Linters
+# *******************************************************
+
+
+[tool.isort]
+line_length=79
+multi_line_output=3
+known_django="django"
+known_libs="libs"
+known_drf="rest_framework"
+known_apps="apps"
+skip=[
+    "migrations",
+    "taggit_migrations",
+    "_tmp",
+    "dev_tools",
+    "src",
+    "scripts",
+    "venv",
+    ".venv",
+    "node_modules",
+    "test_modules.py",
+]
+sections=[
+    "FUTURE",
+    "STDLIB",
+    "DJANGO",
+    "DRF",
+    "THIRDPARTY",
+    "FIRSTPARTY",
+    "LIBS",
+    "APPS",
+    "LOCALFOLDER"
+]
+include_trailing_comma=true
+
+
+[tool.mypy]
+python_version = "3.11"
+check_untyped_defs = true
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+plugins = [
+    "mypy_django_plugin.main",
+    "mypy_drf_plugin.main",
+]
+strict = false
+warn_no_return = false
+# disable_error_code = override, no-redef
+# exclude = config|venv|.venv|__init__.py
+
+
+[tool.flake8]
+# F403: using wildcard imports (from … import *)
+# F405: name may be undefined, or defined from star imports: module
+# D100: missing docstring in public module
+# D102: missing docstring in public method
+# D103: missing docstring in public function
+# D105: missing docstring in magic method
+# D106: missing docstring in public nested
+# D107: missing docstring in __init__
+# PT004: missing add leading underscore in name of fixture that does not return anything
+ignore = ["D100", "D102", "D103", "D105", "D106", "D107", "F403", "F405", "W503", "PT004"]
+inline-quotes="double"
+exclude = [
+    "config",
+    ".venv",
+    "venv",
+    "__init__.py"
+]
+max-line-length = 100
+
+# flake8-pytest-style configuration
+# https://github.com/m-burst/flake8-pytest-style
+pytest-fixture-no-parentheses = true
+pytest-parametrize-names-type = "list"
+pytest-parametrize-values-type = "list"
+pytest-parametrize-values-row-type = "list"
