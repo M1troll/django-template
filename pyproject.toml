@@ -116,3 +116,14 @@ pytest-fixture-no-parentheses = true
 pytest-parametrize-names-type = "list"
 pytest-parametrize-values-type = "list"
 pytest-parametrize-values-row-type = "list"
+
+# F401 https://www.flake8rules.com/rules/F401.html
+# F403 https://www.flake8rules.com/rules/F403.html
+# F405 https://www.flake8rules.com/rules/F405.html
+# E501 https://www.flake8rules.com/rules/E501.html
+per-file-ignores = [
+    "config/settings/config.py:F401,F403,F405",
+    "config/settings/local.template.py:F403,F405",
+    "config/settings/common/authentication.py:E501",
+    "config/settings/common/drf.py:E501",
+]

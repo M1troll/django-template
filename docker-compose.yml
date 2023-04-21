@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  # ------------------------------------------------------------------------------
+  # Database
+  # ------------------------------------------------------------------------------
+  postgres:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -h postgres -t 5 -U ${COMPOSE_POSTGRES_USER} || false"]
+    #   interval: 1s
+    #   timeout: 5s
+    #   retries: 10
+    environment:
+      - POSTGRES_DB=${COMPOSE_PROJECT_NAME}-dev
+      - POSTGRES_USER=${COMPOSE_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${COMPOSE_POSTGRES_PASSWORD}
+
+  # ------------------------------------------------------------------------------
+  # Database Management Systems (DBMS)
+  # ------------------------------------------------------------------------------
+  # pgadmin:
+
+  # ------------------------------------------------------------------------------
+  # Django Backend / API
+  # ------------------------------------------------------------------------------
+  web: &web
+    build: .
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.local
+    ports:
+      - "8000:8000"
+    command: bash -c "inv django.migrate && inv django.run"
+    depends_on:
+    - postgres
+      # postgres:
+      #     condition: service_healthy
+
+volumes:
+  postgres_data:

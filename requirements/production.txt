@@ -31,6 +31,8 @@ drf-nested-routers==0.93.4
     # via -r requirements/production.in
 markupsafe==2.1.2
     # via werkzeug
+psycopg2-binary==2.9.6
+    # via -r requirements/production.in
 pytz==2023.3
     # via djangorestframework
 sqlparse==0.4.4

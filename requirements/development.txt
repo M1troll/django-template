@@ -87,6 +87,8 @@ pluggy==1.0.0
     # via pytest
 prompt-toolkit==3.0.38
     # via ipython
+psycopg2-binary==2.9.6
+    # via -r requirements/production.in
 ptyprocess==0.7.0
     # via pexpect
 pure-eval==0.2.2

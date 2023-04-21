@@ -1,6 +1,6 @@
 from invoke import FailingResponder, Failure, Responder, task
 
-from . import common, start
+from . import common, docker, start
 
 
 @task
@@ -94,7 +94,15 @@ def createsuperuser(
 def run(context):
     """Run development web-server."""
     common.print_success("Running server")
-    manage(context, "runserver_plus localhost:8000 --keep-meta-shutdown")
+    # We use ``0.0.0.0:8000`` instead of ``localhost`` or ``127.0.0.1``
+    # because docker use these addresses for its loopback
+    # https://stackoverflow.com/questions/49476217/docker-cant-access-django-server
+    docker.docker_compose_run(
+        context,
+        params="--rm --service-ports",
+        container="web",
+        command="python3 manage.py runserver_plus 0.0.0.0:8000",
+    )
 
 
 @task

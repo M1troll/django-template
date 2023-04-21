@@ -2,6 +2,11 @@
 # https://werkzeug.palletsprojects.com/en/2.2.x/
 Werkzeug
 
+# Database abstraction layer
+# https://pypi.org/project/psycopg2-binary/
+psycopg2-binary
+
+
 ## Django
 django
 

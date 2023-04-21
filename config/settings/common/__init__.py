@@ -3,6 +3,7 @@
 # -----------------------------------------------------------------------------
 from .authentication import *
 from .databases import *
+from .drf import *
 from .installed_apps import *
 from .internationalization import *
 from .middleware import *
@@ -14,7 +15,6 @@ from .templates import *
 # -----------------------------------------------------------------------------
 # Business Logic Custom Variables and Settings
 # -----------------------------------------------------------------------------
-DEBUG = True
 ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
 
@@ -25,4 +25,4 @@ ADMINS = (
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Custom settings
-APP_LABEL = "Project Name"
+APP_LABEL = "django-template"
