@@ -19,11 +19,11 @@ ip = socket.gethostbyname(socket.gethostname())
 INTERNAL_IPS += (ip[:-1] + "1",)
 
 DATABASES["default"].update(
-    NAME=env.str("DATABASE_NAME"),
-    USER=env.str("POSTGRES_USER"),
-    PASSWORD=env.str("POSTGRES_PASSWORD"),
-    HOST=env.str("POSTGRES_HOST"),
-    PORT=env.int("POSTGRES_PORT"),
+    NAME=env.str("DATABASE_NAME", ""),
+    USER=env.str("POSTGRES_USER", ""),
+    PASSWORD=env.str("POSTGRES_PASSWORD", ""),
+    HOST=env.str("POSTGRES_HOST", ""),
+    PORT=env.int("POSTGRES_PORT", 0),
     CONN_MAX_AGE=0,
 )
 
