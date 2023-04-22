@@ -1,5 +1,8 @@
 # Setup
 
+docker
+docker-compose
+
 ## Python Requirements
 
 Currently, we're using `python 3.11`

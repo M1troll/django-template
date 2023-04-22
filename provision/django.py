@@ -3,9 +3,24 @@ from invoke import FailingResponder, Failure, Responder, task
 from . import common, docker, start
 
 
+def wait_for_database(context):
+    """Ensure that database is up and ready to accept connections.
+
+    Function called just once during subsequent calls of management commands.
+
+    """
+    if hasattr(wait_for_database, "_called"):
+        return
+    docker.up(context)
+    wait_for_database._called = True    # type: ignore[attr-defined]
+
+
 @task
 def manage(context, command, watchers=()):
     """Run ``manage.py`` command.
+
+    This command also handle starting of required services and waiting DB to
+    be ready
 
     Args:
         context: Invoke context
@@ -13,6 +28,7 @@ def manage(context, command, watchers=()):
         watchers: Automated responders to command
 
     """
+    wait_for_database(context)
     return start.run_python(
         context,
         " ".join(["manage.py", command]),
@@ -79,7 +95,7 @@ def createsuperuser(
     try:
         manage(
             context,
-            command="createsuperuser",
+            command="createsuperuser --noinput",
             watchers=[
                 responder_email,
                 responder_user_name,

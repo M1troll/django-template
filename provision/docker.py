@@ -36,6 +36,12 @@ def docker_compose_run(
     return context.run(cmd, watchers=watchers)
 
 
+@task
+def build(context, clean=False):
+    """Build required docker containers."""
+    context.run("docker-compose build")
+
+
 def docker_compose_exec(context, service: str, command: str):
     """Run ``exec`` using docker-compose.
 

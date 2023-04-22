@@ -15,6 +15,10 @@ def init(context, clean=False):
     if clean:
         docker.clear(context)
     install_requirements(context)
+
+    # Build container
+    docker.build(context)
+
     django.migrate(context)
     tests.run(context)
     django.createsuperuser(context)
