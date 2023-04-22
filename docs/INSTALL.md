@@ -21,5 +21,9 @@ pyenv shell django-template
 After preparing virtual env need to install tools for preparing project.
 
 ```console
-pip install -r requirements/local.in
+pip install -r requirements/local_build.txt
+```
+
+```
+inv project.init
 ```
