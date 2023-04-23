@@ -46,7 +46,17 @@ pip install -r requirements/local_build.txt
 inv project.init
 ```
 
-4. Run server for check that project is ready for work:
+4. Set environment variables
+
+```bash
+inv secrets.create-env
+```
+
+Open `.env` file in `config/settings/` dir and set values for variables.
+
+`P.S.` In future it will be replaced on downloading credentials from cloud.
+
+5. Run server for check that project is ready for work:
 
 ```bash
 inv django.run
