@@ -14,7 +14,10 @@ def init(context, clean=False):
     git.setup(context)
     if clean:
         docker.clear(context)
-    install_requirements(context)
+
+    # Now we use docker container for work with running project
+    # so we don't need to install requirements locally
+    # install_requirements(context)
 
     # Build container
     docker.build(context)

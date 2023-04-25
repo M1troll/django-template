@@ -7,7 +7,16 @@ if not hasattr(inspect, "getargspec"):
 
 from invoke import Collection
 
-from provision import django, docker, git, linters, project, start, tests
+from provision import (
+    django,
+    docker,
+    git,
+    linters,
+    project,
+    secrets,
+    start,
+    tests,
+)
 
 ns = Collection(
     django,
@@ -15,6 +24,7 @@ ns = Collection(
     linters,
     project,
     start,
+    secrets,
     tests,
     docker,
 )
