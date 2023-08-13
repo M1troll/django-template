@@ -9,7 +9,7 @@ from .common import print_error, print_success
 
 DEFAULT_FOLDERS = " ".join([
     "apps",
-    "provision",
+    "invocations",
 ])
 
 

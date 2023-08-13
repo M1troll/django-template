@@ -7,7 +7,7 @@ if not hasattr(inspect, "getargspec"):
 
 from invoke import Collection
 
-from provision import (
+from invocations import (
     django,
     docker,
     git,
