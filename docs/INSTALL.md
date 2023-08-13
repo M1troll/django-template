@@ -2,8 +2,7 @@
 
 You have to have the following tools installed prior initializing the project:
 
-* [docker](https://docs.docker.com/engine/installation/)
-  Ensure you can run `docker` without `sudo`.
+* [docker](https://docs.docker.com/engine/installation/) (Ensure you can run `docker` without `sudo`).
 * [docker-compose](https://docs.docker.com/v1.8/compose/install/)
 * [pyenv](https://github.com/pyenv/pyenv)
 * [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
@@ -13,8 +12,7 @@ You have to have the following tools installed prior initializing the project:
 Currently, we're using `python 3.11`
 
 The simplest way to configure proper Python version and virtual environment
-is using [`pyenv`](https://github.com/pyenv/pyenv) and
-[`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv).
+is using [`pyenv`](https://github.com/pyenv/pyenv) and [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv).
 
 ## Services
 
